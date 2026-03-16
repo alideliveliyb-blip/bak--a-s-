@@ -1,97 +1,89 @@
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KBA Mizan Rehberi</title>
+    <title>KBA Mizan Paneli</title>
     <style>
-        :root { --olur: #27ae60; --sikinti: #f39c12; --olmaz: #e74c3c; --bg: #f4f7f6; --kba-dark: #1a2a44; --kba-gold: #c5a059; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: #333; padding: 15px; margin: 0; line-height: 1.6; }
-        .container { max-width: 550px; margin: auto; background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 8px solid var(--kba-dark); }
-        .header { text-align: center; margin-bottom: 30px; }
-        .kba-logo { width: 100%; max-width: 240px; height: auto; margin-bottom: 15px; }
-        .header h1 { font-size: 1.3em; color: var(--kba-dark); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        .input-group { background: #fdfdfd; padding: 20px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #eee; }
-        label { display: block; font-size: 0.75em; font-weight: bold; color: var(--kba-dark); margin-top: 12px; text-transform: uppercase; }
-        input, select, button { width: 100%; padding: 14px; margin: 6px 0; border-radius: 8px; border: 1px solid #ddd; font-size: 15px; box-sizing: border-box; }
-        button { background: var(--kba-dark); color: white; font-weight: bold; border: none; cursor: pointer; margin-top: 20px; transition: 0.3s; }
-        .ev-card { background: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #f0f0f0; border-left: 10px solid #ccc; position: relative; }
-        .card-OLUR { border-left-color: var(--olur); background: #fafffa; }
-        .card-SIKINTI { border-left-color: var(--sikinti); background: #fffdf5; }
-        .card-OLMAZ { border-left-color: var(--olmaz); background: #fffafa; }
-        .ev-baslik { font-weight: bold; color: var(--kba-dark); font-size: 1.1em; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .hikmet-ozeti { font-size: 0.85em; color: #555; margin: 10px 0; font-style: italic; background: rgba(255,255,255,0.6); padding: 8px; border-radius: 5px; }
-        .durum-sonuc { font-weight: 800; text-transform: uppercase; margin-top: 10px; font-size: 1em; }
-        /* Yeni Uyarı Kutusu Stili */
-        .rehber-mesaj { margin-top: 12px; padding: 10px; border-radius: 6px; font-size: 0.85em; font-weight: 500; border: 1px solid transparent; }
-        .uyari-OLUR { background: #e8f5e9; color: #1b5e20; border-color: #c8e6c9; }
-        .uyari-SIKINTI { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
-        .uyari-OLMAZ { background: #ffebee; color: #b71c1c; border-color: #ffcdd2; }
-        .text-OLUR { color: var(--olur); }
-        .text-SIKINTI { color: var(--sikinti); }
-        .text-OLMAZ { color: var(--olmaz); }
-        .arabi-tag { position: absolute; top: 15px; right: 15px; background: var(--kba-dark); padding: 3px 10px; border-radius: 20px; font-size: 0.7em; font-weight: bold; color: #fff; }
-        .footer { text-align: center; font-size: 0.75em; color: #999; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; padding: 20px; color: #333; }
+        .kba-container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #1a2a44; margin-bottom: 25px; padding-bottom: 15px; }
+        .header img { max-width: 250px; height: auto; }
+        label { display: block; margin-top: 15px; font-weight: bold; font-size: 0.9em; }
+        input, select, button { width: 100%; padding: 12px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
+        button { background: #1a2a44; color: white; font-weight: bold; cursor: pointer; border: none; margin-top: 20px; }
+        .ev-box { border: 1px solid #eee; padding: 20px; margin-bottom: 15px; border-radius: 10px; background: #fafafa; position: relative; }
+        .OLUR { border-left: 10px solid #27ae60; }
+        .SIKINTI { border-left: 10px solid #f39c12; }
+        .OLMAZ { border-left: 10px solid #e74c3c; }
+        .ev-baslik { font-size: 1.1em; font-weight: bold; color: #1a2a44; margin-bottom: 8px; }
+        .ev-aciklama { font-size: 0.9em; color: #555; line-height: 1.5; margin-bottom: 10px; font-style: italic; }
+        .durum-etiket { font-weight: bold; text-transform: uppercase; }
+        .arabi-gun { position: absolute; top: 10px; right: 15px; font-size: 0.8em; color: #888; }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="kba-container">
     <div class="header">
-        <img src="https://i.ibb.co/Lhb8pB3/kba-logo.png" onerror="this.src='https://via.placeholder.com/250x80?text=KEND%C4%B0L%C4%B0K+B%C4%B0L%C4%B0NC%C4%B0'" alt="KBA Logo" class="kba-logo">
-        <h1>KBA Mizan Rehberi</h1>
-    </div>
-    
-    <div class="input-group">
-        <label>Danışan Adı</label>
-        <input type="text" id="isim" placeholder="Ad Soyad">
-        <label>Doğum Tarihi</label>
-        <input type="date" id="tarih" value="1965-03-29">
-        <label>Yükselen / 1. Ev Burcu</label>
-        <select id="burc">
-            <option value="0">Koç (Mars Başlangıç)</option>
-            <option value="1">Boğa (Venüs Başlangıç)</option>
-            <option value="2">İkizler (Merkür Başlangıç)</option>
-            <option value="3">Yengeç (Ay Başlangıç)</option>
-            <option value="4">Aslan (Güneş Başlangıç)</option>
-            <option value="5">Başak (Merkür Başlangıç)</option>
-            <option value="6">Terazi (Venüs Başlangıç)</option>
-            <option value="7">Akrep (Mars Başlangıç)</option>
-            <option value="8">Yay (Jüpiter Başlangıç)</option>
-            <option value="9">Oğlak (Satürn Başlangıç)</option>
-            <option value="10">Kova (Satürn Başlangıç)</option>
-            <option value="11">Balık (Jüpiter Başlangıç)</option>
-        </select>
-        <button onclick="analiziBaslat()">MİZANI VE REHBERİ GÖRÜNTÜLE</button>
+        <img src="https://i.ibb.co/Lhb8pB3/kba-logo.png" alt="Kendilik Bilinci Akademisi">
+        <h2 style="margin-top:10px;">Mizan ve Evre Analizi</h2>
     </div>
 
-    <div id="sonucPaneli"></div>
-    <div class="footer">© Kendilik Bilinci Akademisi | KBA</div>
+    <label>İsim:</label>
+    <input type="text" id="isim" placeholder="Danışan ismi">
+
+    <label>Ebced Değeri:</label>
+    <input type="number" id="ebced" placeholder="İsim ebcedi">
+
+    <label>Doğum Tarihi:</label>
+    <input type="date" id="tarih">
+
+    <label>1. Ev (Yükselen Burç Kapısı):</label>
+    <select id="burc">
+        <option value="0">Mars (Koç)</option>
+        <option value="1">Venüs (Boğa)</option>
+        <option value="2">Merkür (İkizler)</option>
+        <option value="3">Ay (Yengeç)</option>
+        <option value="4">Güneş (Aslan)</option>
+        <option value="5">Merkür (Başak)</option>
+        <option value="6">Venüs (Terazi)</option>
+        <option value="7">Mars (Akrep)</option>
+        <option value="8">Jüpiter (Yay)</option>
+        <option value="9">Satürn (Oğlak)</option>
+        <option value="10">Satürn (Kova)</option>
+        <option value="11">Jüpiter (Balık)</option>
+    </select>
+
+    <button onclick="hesapla()">MİZANI DÖK</button>
+
+    <div id="sonuclar" style="margin-top:25px;"></div>
 </div>
 
 <script>
-    const gezegenler = ["Mars", "Venüs", "Merkür", "Ay", "Güneş", "Merkür", "Venüs", "Mars", "Jüpiter", "Satürn", "Satürn", "Jüpiter"];
-    const hikmetler = [
-        "<b>Kimlik Kapısı:</b> Ruhun dünyaya açılan ilk kapısı, nefs terbiyesinin başladığı yerdir.",
-        "<b>Bereket Kapısı:</b> Rızkın ve emanetin mizanıdır; sahip olduklarınla kurduğun bağdır.",
-        "<b>Kelam Kapısı:</b> Zihnin, dilin ve yakın çevrenin hakikat ile olan imtihanıdır.",
-        "<b>Gönül Kapısı:</b> Aile, kökler ve içsel huzurun merkezidir; asıl yuvaya dönüştür.",
-        "<b>Aşk Kapısı:</b> Yaratıcılık, neşe ve ilahi tecellinin hayat bulduğu alandır.",
-        "<b>Arınma Kapısı:</b> Hizmet, disiplin ve bedensel sağlığın nefis ile terbiyesidir.",
-        "<b>Vuslat Kapısı:</b> Eş ve ortaklık; karşındakinin üzerinden kendini okuma sanatıdır.",
-        "<b>Sır Kapısı:</b> Krizler ve büyük dönüşümler; eski benliğin yıkılıp yeniden doğuşudur.",
-        "<b>Uyanış Kapısı:</b> Hikmet, inanç ve hakikat yolculuğunun yüksek basamağıdır.",
-        "<b>Zirve Kapısı:</b> Toplumsal duruş, kariyer ve başarının ahlak ile mizanıdır.",
-        "<b>Birlik Kapısı:</b> Umutlar ve sosyal çevre; 'Ben'den 'Biz'e geçişin duasıdır.",
-        "<b>Teslimiyet Kapısı:</b> Bilinçaltı ve gizli düşmanlar; mutlak teslimiyetin vuslatıdır."
+    const gList = ["Mars", "Venüs", "Merkür", "Ay", "Güneş", "Merkür", "Venüs", "Mars", "Jüpiter", "Satürn", "Satürn", "Jüpiter"];
+    
+    const evBilgileri = [
+        {baslik: "1. Ev: Kimlik Kapısı", metin: "Nefs-i Levvame durağı; kişinin dünyadaki mizaç ve karakter başlangıcıdır."},
+        {baslik: "2. Ev: Bereket Kapısı", metin: "Rızık ve emanet mizanı; sahip olunan değerlerin bereket sınavıdır."},
+        {baslik: "3. Ev: Kelam Kapısı", metin: "Zihin, dil ve yakın çevreyle kurulan iletişimin hakikat bağıdır."},
+        {baslik: "4. Ev: Gönül Kapısı", metin: "Aile, kökler ve içsel huzurun yuvası; asıl yuvaya dönüştür."},
+        {baslik: "5. Ev: Aşk Kapısı", metin: "Yaratıcılık, neşe ve ilahi tecellinin hayattaki yansımasıdır."},
+        {baslik: "6. Ev: Arınma Kapısı", metin: "Hizmet, çalışma disiplini ve bedensel sağlığın nefis terbiyesidir."},
+        {baslik: "7. Ev: Vuslat Kapısı", metin: "Eş ve ortaklık; karşındaki ayna üzerinden kendini okuma sanatıdır."},
+        {baslik: "8. Ev: Sır Kapısı", metin: "Eski benliğin yıkılıp, ruhsal dönüşümle yeniden doğuş kapısıdır."},
+        {baslik: "9. Ev: Uyanış Kapısı", metin: "İnanç, hikmet ve hakikat yolculuğunun yüksek tekamül durağıdır."},
+        {baslik: "10. Ev: Zirve Kapısı", metin: "Toplumsal duruş, kariyer ve başarının liyakat ile mizanıdır."},
+        {baslik: "11. Ev: Birlik Kapısı", metin: "Umutlar ve 'Biz' bilinci; kolektif fayda için kurulan hayallerdir."},
+        {baslik: "12. Ev: Teslimiyet Kapısı", metin: "Bilinçaltı ve Rabb'e olan mutlak vuslatın sessiz sır alanıdır."}
     ];
 
-    function analiziBaslat() {
-        const ad = document.getElementById('isim').value || "Katılımcı";
+    function hesapla() {
         const dStr = document.getElementById('tarih').value;
         const bIdx = parseInt(document.getElementById('burc').value);
-        const area = document.getElementById('sonucPaneli');
-        area.innerHTML = `<p style='text-align:center;'>Sayın <b>${ad}</b>, mizan evreleriniz:</p>`;
+        const area = document.getElementById('sonuclar');
+        area.innerHTML = "";
+        
+        if(!dStr) { alert("Lütfen tarih seçin"); return; }
         
         let start = new Date(dStr);
 
@@ -101,9 +93,8 @@
             if (d.getDate() !== start.getDate()) d.setDate(0);
 
             const hDay = parseInt(new Intl.DateTimeFormat('tr-u-ca-islamic-umalqura-nu-latn', {day:'numeric'}).format(d));
-            const gz = gezegenler[(bIdx + i) % 12];
+            const gz = gList[(bIdx + i) % 12];
             let evre = "";
-            let mesaj = "";
 
             if (gz === "Venüs" || gz === "Jüpiter" || gz === "Güneş") {
                 evre = hDay <= 10 ? "OLUR" : (hDay <= 20 ? "SIKINTI" : "OLMAZ");
@@ -115,22 +106,15 @@
                 evre = hDay <= 15 ? "OLUR" : "OLMAZ";
             }
 
-            // Rehber Mesajları (Senin isteğin üzerine)
-            if(evre === "OLUR") mesaj = "✨ <b>Yol Açık:</b> Akışta kal, gayret et ve bu alanın şükrünü eda et.";
-            if(evre === "SIKINTI") mesaj = "⚠️ <b>Dikkat:</b> Tedbir al, fevri kararlardan kaçın ve esma zikriyle alanı koru.";
-            if(evre === "OLMAZ") mesaj = "🛑 <b>Teslimiyet:</b> Zorlama, rıza göster. Bu alanda arınma ve bekleyiş sınavındasın.";
-
             area.innerHTML += `
-                <div class="ev-card card-${evre}">
-                    <div class="arabi-tag">GÜN: ${hDay}</div>
-                    <div class="ev-baslik">${i+1}. EV: ${gz} Kapısı</div>
-                    <div class="hikmet-ozeti">${hikmetler[i]}</div>
-                    <div class="durum-sonuc text-${evre}">DURUM: ${evre}</div>
-                    <div class="rehber-mesaj uyari-${evre}">${mesaj}</div>
+                <div class="ev-box ${evre}">
+                    <div class="arabi-gun">Arabi Gün: ${hDay}</div>
+                    <div class="ev-baslik">${evBilgileri[i].baslik}</div>
+                    <div class="ev-aciklama">${evBilgileri[i].metin}</div>
+                    <strong>Kapı:</strong> ${gz} | <span class="durum-etiket">DURUM: ${evre}</span>
                 </div>`;
         }
     }
 </script>
 </body>
 </html>
-   
